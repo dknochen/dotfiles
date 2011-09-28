@@ -1,7 +1,7 @@
 syntax enable
 colorscheme solarized
 set background=dark
-set guifont=Menlo:h14
+set guifont=Menlo:h15
 let g:solarized_hitrail=1
 set columns=90
 set lines=60
