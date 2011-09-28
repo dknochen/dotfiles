@@ -3,7 +3,7 @@ colorscheme solarized
 set background=dark
 set guifont=Menlo:h14
 let g:solarized_hitrail=1
-set columns=100
+set columns=90
 set lines=60
 
 set laststatus=2
@@ -24,6 +24,7 @@ set smartindent
 set list listchars=tab:\ \ ,trail:·
 
 " Tab Completion
+set wildmenu
 set wildignore+=.git,*.pyc,.sass-cache/,.DS_Store,*.mo
 set wildmode=list:longest,list:full
 
