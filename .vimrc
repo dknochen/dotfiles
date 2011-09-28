@@ -3,8 +3,8 @@ colorscheme solarized
 set background=dark
 set guifont=Menlo:h15
 let g:solarized_hitrail=1
-set columns=90
-set lines=60
+"set columns=90
+"set lines=60
 
 set laststatus=2
 set showmode
