@@ -4,7 +4,7 @@ set cursorline
 set colorcolumn=80
 highlight ColorColumn ctermbg=darkgrey guibg=#1e1e1e
 
-set transparency=4
+set transparency=2
 
 " colorscheme twilight
 
