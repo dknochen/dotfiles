@@ -1,0 +1,11 @@
+[user]
+	name = Mike Tigas
+	email = mike@tig.as
+[github]
+	user = mtigas
+	token = (INSERT KEY HERE)
+[core]
+	autocrlf = 0
+	excludesfile = /Users/mtigas/.gitignore
+[push]
+	default = matching
