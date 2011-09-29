@@ -1,6 +1,8 @@
 # mtigas/dotfiles
 
-*nix config files for fun and profit
+*nix config files, helper scripts, and other miscellany, for fun and profit.
+
+Yes, more than just *dotfiles*.
 
 ## vim
 
