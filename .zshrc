@@ -255,19 +255,17 @@ export PATH="/usr/local/pgsql/bin:$PATH"
 export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
 export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
 export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
-
 export PATH=$PATH:$HOME/Library/_LocalApps/depot_tools:$HOME/Library/_LocalApps/go
+export PATH=$PATH:/usr/local/Cellar/python/2.7.1/bin
 
 [[ -s "/Users/mtigas/.rvm/scripts/rvm" ]] && source "/Users/mtigas/.rvm/scripts/rvm"
 
 export PATH=/usr/local/Cellar/npm/0.2.2/share/npm/bin:$PATH
 export NODE_PATH=/usr/local/Cellar/npm/0.2.2/lib/node:$NODE_PATH
 
-alias mvim="/Users/mtigas/Library/mvim --remote-tab-silent"
-alias mate="/Users/mtigas/Library/mvim --remote-tab-silent"
-alias mvim_wait="/Users/mtigas/Library/mvim --remote-wait"
-alias mate_wait="/Users/mtigas/Library/mvim --remote-wait"
-export EDITOR="/Users/mtigas/Library/mvim --remote-wait"
-export SVN_EDITOR="/Users/mtigas/Library/mvim --remote-wait"
+export EDITOR="mvim --remote-wait"
+export SVN_EDITOR="mvim --remote-wait"
 
+export TWITTER_USERNAME=""
+export TWITTER_PASSWORD=""
 
