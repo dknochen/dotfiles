@@ -8,11 +8,23 @@ Yes, more than just *dotfiles*.
 
 Bunches of plugins, plus the **[Solarized][solarized] color scheme.
 
+**F5** to run [PEP 8](http://www.python.org/dev/peps/pep-0008/) checks for
+style. **F7** to run [pyflakes](https://launchpad.net/pyflakes) for static code
+errors.
+
 [solarized]: http://ethanschoonover.com/solarized/
+
+### Plugins:
 
 * **[Command-T](http://www.vim.org/scripts/script.php?script_id=3025)**
  * Open `.vba` file with vim and do `:so %`
 * **[SuperTab](http://www.vim.org/scripts/script.php?script_id=182)**
+ * Copy `.vim` file to `~/.vim/plugin/`
+* **[pyflakes](http://www.vim.org/scripts/script.php?script_id=3161)**
+ * Install pyflakes: `pip install pyflakes`
+ * Copy `.vim` file to `~/.vim/plugin/`
+* **[pep8](http://www.vim.org/scripts/script.php?script_id=2914)**
+ * Install pep8: `pip install pep8`
  * Copy `.vim` file to `~/.vim/plugin/`
 * **[vim-colors-solarized](http://ethanschoonover.com/solarized/vim-colors-solarized)**
 
