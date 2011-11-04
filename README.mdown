@@ -9,8 +9,8 @@ Yes, more than just *dotfiles*.
 Bunches of plugins, plus the **[Solarized][solarized] color scheme.
 
 **F5** to run [PEP 8](http://www.python.org/dev/peps/pep-0008/) checks for
-style. **F7** to run [pyflakes](https://launchpad.net/pyflakes) for static code
-errors.
+style. **F6** to remove trailing whitespaces from lines. **F7** to run
+[pyflakes](https://launchpad.net/pyflakes) for static code errors.
 
 [solarized]: http://ethanschoonover.com/solarized/
 
