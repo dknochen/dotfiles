@@ -39,3 +39,5 @@ let g:CommandTMaxHeight=20
 
 au BufRead,BufNewFile {Gemfile,Vagrantfile} set ft=ruby
 
+nnoremap <silent> <F6> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar>:nohl<CR>
+
