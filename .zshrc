@@ -198,6 +198,15 @@ tunnel1() { # web46 webfaction
 tunnel2() { # slice
     ssh -v2aNCD 14230 -c blowfish-cbc,arcfour256 -m hmac-sha1 173.45.236.2
 }
+cprx() {
+    PROFTEMPDIR="/tmp/cprx-`date +\"%Y%m%d-%H%M\"`"
+
+    "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"\
+    --proxy-server="socks=127.0.0.1:14230"\
+    --user-data-dir=$PROFTEMPDIR
+
+    rm -fr PROFTEMPDIR
+}
 convert_x264() {
     ffmpeg -i $1 -f mp4 -threads 0 -vcodec libx264 -vpre hqi -level 31 -crf 25 -acodec libfaac -ab 96kb -ac 2 -y $2
 }
