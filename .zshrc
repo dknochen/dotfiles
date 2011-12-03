@@ -265,7 +265,7 @@ export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
 export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
 export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
 export PATH=$PATH:$HOME/Library/_LocalApps/depot_tools:$HOME/Library/_LocalApps/go
-export PATH=$PATH:/usr/local/Cellar/python/2.7.1/bin
+export PATH=/usr/local/share/python:$PATH
 
 [[ -s "/Users/mtigas/.rvm/scripts/rvm" ]] && source "/Users/mtigas/.rvm/scripts/rvm"
 
