@@ -45,7 +45,7 @@ PR_NO_COLOR="%{$terminfo[sgr0]%}"
 
 # right-hand prompt showing current dir and git branch (if in a git repo)
 git_prompt_info() {
-    echo `ruby -e "print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1:')"`
+    echo `/usr/bin/ruby -e "print (%x{git branch 2> /dev/null}.grep(/^\*/).first || '').gsub(/^\* (.+)$/, '\1:')"`
 }
 setopt prompt_subst
 PROMPT='%n %# '
@@ -147,6 +147,14 @@ alias lstree="ls -R | grep \":$\" | sed -e 's/:$//' -e 's/[^-][^\/]*\//–/g' -e
 site_packages() {
     python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"
 }
+patch_chrome() {
+    cd /Applications/Google\ Chrome.app/Contents/MacOS/
+    mv Google\ Chrome Chrome
+    touch "Google Chrome"
+    chmod +x Google\ Chrome
+    echo "#!/bin/sh" >> "Google Chrome"
+    echo "/Applications/Google\ Chrome.app/Contents/MacOS/Chrome --disable-enforced-throttling --disk-cache-dir=/dev/null --disk-cache-size=1" >> "Google Chrome"
+}
 cleanpyc() {
     # Deletes Python bytecode from common places and the current directory tree.
     sudo find /usr/local -name "*.pyc" -o -name "*.pyo" -delete
@@ -172,7 +180,7 @@ pack_code() {
     do
         print
         print $i
-        hdiutil compact -batteryallowed $i
+        hdiutil compact -verbose -batteryallowed $i
     done
 }
 alias sloc="find . -name \"*.css\" -o -name \"*.php\" -o -name \"*.js\" -o -name \"*.py\" -o -name \"*.sh\" | xargs wc -l"
@@ -259,7 +267,7 @@ export PYTHONPATH="$HOME/Code/libs"
 
 export PATH=/usr/local/bin:/usr/local/sbin:$PATH
 
-export PATH=$HOME/Code/libs:$PATH
+export PATH=$HOME/Code/libs:$PATH:$HOME/Library/_LocalApps/clean_access_workaround
 export PATH="/usr/local/pgsql/bin:$PATH"
 export PATH=/Library/Frameworks/UnixImageIO.framework/Programs:$PATH
 export PATH=/Library/Frameworks/PROJ.framework/Programs:$PATH
@@ -267,10 +275,14 @@ export PATH=/Library/Frameworks/GDAL.framework/Programs:$PATH
 export PATH=$PATH:$HOME/Library/_LocalApps/depot_tools:$HOME/Library/_LocalApps/go
 export PATH=/usr/local/share/python:$PATH
 
+alias git=hub
+
 [[ -s "/Users/mtigas/.rvm/scripts/rvm" ]] && source "/Users/mtigas/.rvm/scripts/rvm"
 
 export PATH=/usr/local/Cellar/npm/0.2.2/share/npm/bin:$PATH
 export NODE_PATH=/usr/local/Cellar/npm/0.2.2/lib/node:$NODE_PATH
+
+export PATH=/usr/local/Cellar/ruby/1.9.3-p0/bin:$PATH
 
 export EDITOR="mvim --remote-wait"
 export SVN_EDITOR="mvim --remote-wait"
