@@ -200,8 +200,8 @@ alias start_postgres="pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgr
 alias stop_postgres="pg_ctl -D /usr/local/var/postgres stop -s -m fast"
 alias start_mongo="sudo mongod run --config /usr/local/Cellar/mongodb/1.8.1-x86_64/mongod.conf"
 
-tunnel1() { # web46 webfaction
-    ssh -v2aNCD 14230 -c aes256-cbc,aes256-ctr -m hmac-ripemd160 174.133.234.43
+tunnel1() { # webfaction
+    ssh -v2aNCD 14230 -c aes256-cbc,aes256-ctr -m hmac-ripemd160 108.59.4.65
 }
 tunnel2() { # slice
     ssh -v2aNCD 14230 -c blowfish-cbc,arcfour256 -m hmac-sha1 173.45.236.2
@@ -282,6 +282,7 @@ alias git=hub
 export PATH=/usr/local/Cellar/npm/0.2.2/share/npm/bin:$PATH
 export NODE_PATH=/usr/local/Cellar/npm/0.2.2/lib/node:$NODE_PATH
 
+export PATH=/usr/local/Cellar/python/2.7.1/bin:$PATH
 export PATH=/usr/local/Cellar/ruby/1.9.3-p0/bin:$PATH
 
 export EDITOR="mvim --remote-wait"
