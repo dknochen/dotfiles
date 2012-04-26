@@ -29,7 +29,7 @@ style. **F6** to remove trailing whitespaces from lines. **F7** to run
 * **[vim-colors-solarized](http://ethanschoonover.com/solarized/vim-colors-solarized)**
 
         mkdir -p ~/.vim/colors/
-        curl -o ~/.vim/colors/solarized.vim https://github.com/altercation/vim-colors-solarized/raw/master/colors/solarized.vim
+        curl -Lo ~/.vim/colors/solarized.vim https://github.com/altercation/vim-colors-solarized/raw/master/colors/solarized.vim
 
 ## zsh
 
