@@ -148,12 +148,21 @@ site_packages() {
     python -c "from distutils.sysconfig import get_python_lib; print get_python_lib()"
 }
 patch_chrome() {
-    cd /Applications/Google\ Chrome.app/Contents/MacOS/
-    mv Google\ Chrome Chrome
-    touch "Google Chrome"
-    chmod +x Google\ Chrome
-    echo "#!/bin/sh" >> "Google Chrome"
-    echo "/Applications/Google\ Chrome.app/Contents/MacOS/Chrome --disable-enforced-throttling --disk-cache-dir=/dev/null --disk-cache-size=1" >> "Google Chrome"
+    pushd /Applications/Google\ Chrome.app/Contents/MacOS/
+    #if [[ "`file Google\ Chrome`" == "*Mach-O*" ]]
+    #then
+        mv Google\ Chrome Chrome
+        touch "Google Chrome"
+        chmod +x Google\ Chrome
+        echo "#!/bin/sh" >> "Google Chrome"
+        echo "/Applications/Google\ Chrome.app/Contents/MacOS/Chrome --disable-enforced-throttling --disk-cache-dir=/dev/null --disk-cache-size=1" >> "Google Chrome"
+    #fi
+    popd
+    ls /Applications/Google\ Chrome.app/Contents/MacOS/
+    head -c 10 /Applications/Google\ Chrome.app/Contents/MacOS/Chrome
+    echo
+    head -c 10 /Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome
+    echo
 }
 cleanpyc() {
     # Deletes Python bytecode from common places and the current directory tree.
@@ -225,14 +234,14 @@ pngup() {
 	pngcrush -rem alla $1 $1.new &&\
 	rm $1 &&\
 	mv $1.new $1 &&\
-	optipng -o4 $1 &&\
-	s3up $1 # && rm $1
+	optipng -i1 -o7 $1 &&\
+	s3up $1
 }
 pngcompress() {
 	pngcrush -rem alla $1 $1.new &&\
 	rm $1 &&\
 	mv $1.new $1 &&\
-	optipng -o6 $1 # * && rm $1
+	optipng -i1 -o7 $1
 }
 test_http_size() {
 	echo "gzip"
@@ -288,9 +297,9 @@ export PATH=/usr/local/Cellar/ruby/1.9.3-p0/bin:$PATH
 export EDITOR="mvim --remote-wait"
 export SVN_EDITOR="mvim --remote-wait"
 
-export TWITTER_USERNAME=""
-export TWITTER_PASSWORD=""
+#export TWITTER_USERNAME=""
+#export TWITTER_PASSWORD=""
 
-export http_proxy=http://127.0.0.1:8118
-export https_proxy=http://127.0.0.1:8118
+#export http_proxy=http://127.0.0.1:8118
+#export https_proxy=http://127.0.0.1:8118
 
