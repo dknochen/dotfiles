@@ -34,7 +34,6 @@ import traceback
 from mimetypes import guess_type
 from datetime import datetime
 from time import sleep
-from urllib import urlencode
 from boto.s3.connection import S3Connection
 import os
 from cStringIO import StringIO
@@ -164,19 +163,35 @@ def upload_file(local_file, bucket, remote_path, cache_time=0, policy="public-re
     basic_headers = {
         "Content-Type" : content_type,
     }
+    encrypt_key = False
+    #if (policy != "public-read"):
+    #    print "encryption on"
+    #    encrypt_key = True
     if force_download:
         basic_headers["Content-Disposition"] = "attachment; filename=%s"% os.path.basename(local_file)
+
+    if "spokesman" in bucket:
+        key_id = r"AKIAIX4TYGMLSSXMW6EA"
+        secret = r"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"
+    else:
+        key_id = AWS_ACCESS_KEY_ID
+        secret = AWS_SECRET_ACCESS_KEY
     
     # Set up a connection to S3
-    s3 = S3Connection(aws_access_key_id=AWS_ACCESS_KEY_ID,aws_secret_access_key=AWS_SECRET_ACCESS_KEY)
+    if "spokesman" in bucket:
+        s3 = S3Connection(aws_access_key_id=key_id,aws_secret_access_key=secret,host='s3-us-west-2.amazonaws.com')
+        print "https://s3-us-west-2.amazonaws.com/media-s3.spokesman.com/%s" % remote_path
+    else:
+        s3 = S3Connection(aws_access_key_id=key_id,aws_secret_access_key=secret)
     bucket = s3.get_bucket(bucket)
     
     # Get info on the local file to determine whether it's large enough that we can perform
     # upload parallelization.
     fstat = os.stat(local_file)
-    fsize = fstat.st_size
     
-    mp_key = bucket.initiate_multipart_upload(remote_path, headers=basic_headers)
+    mp_key = bucket.initiate_multipart_upload(remote_path, headers=basic_headers,
+        encrypt_key=encrypt_key
+    )
     
     active_threads = []
     try:
@@ -238,7 +253,7 @@ def upload_file(local_file, bucket, remote_path, cache_time=0, policy="public-re
     else:
         key.set_metadata('Cache-Control','no-cache, no-store')
     
-    if policy is "public-read":
+    if policy == "public-read":
         key.make_public()
     else:
         key.set_canned_acl(policy)
@@ -278,5 +293,3 @@ if __name__ == '__main__':
         traceback.print_exc(file=sys.stderr)
         sys.stderr.write('\n')
         sys.exit(1)
-
-
