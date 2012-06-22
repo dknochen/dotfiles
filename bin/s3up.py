@@ -76,16 +76,16 @@ def mem_chunk_file(local_file):
     fsize = fstat.st_size
     
     num_chunks = max(int(floor(float(fsize) / 5242880.0)), 1)
+    size_hint = fsize / num_chunks
     
     fp = open(local_file, 'rb')
     for i in range(num_chunks):
-        if i == (num_chunks-1):
-            size_hint = 0
-        else:
-            size_hint = fsize / num_chunks
-        
         tfp = StringIO()
-        tfp.writelines(fp.readlines(size_hint))
+        if i == (num_chunks-1):
+          # write what's left
+          tfp.write(fp.read())
+        else:
+          tfp.write(fp.read(size_hint))
         tfp.seek(0)
         yield tfp
     fp.close()
